@@ -8,4 +8,4 @@ var t=arguments[3];function e(t){return(e="function"==typeof Symbol&&"symbol"==t
 },{}],"TfQ5":[function(require,module,exports) {
 "use strict";var e=require("./gallery-items"),l=t(require("simplelightbox"));function t(e){return e&&e.__esModule?e:{default:e}}require("simplelightbox/dist/simple-lightbox.min.css");const i=document.querySelector(".gallery");i.innerHTML=a();const r=new l.default(".gallery a",{captionsData:"alt",captionDelay:300});function a(){let l="";for(const{preview:t,original:i,description:r}of e.galleryItems)l+=`\n    <a class="gallery__item"  href="${i}"> \n    <img class="gallery__image" src="${t}" alt="${r}" title="${r}" />\n    </a>`;return l}
 },{"./gallery-items":"q5Rn","simplelightbox":"yx6k","simplelightbox/dist/simple-lightbox.min.css":"kz9M"}]},{},["TfQ5"], null)
-//# sourceMappingURL=/goit-js-hw-08/01-gallery.7f4b834e.js.map
+//# sourceMappingURL=/goit-js-hw-08/01-gallery.9a495012.js.map
