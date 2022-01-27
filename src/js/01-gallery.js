@@ -1,11 +1,11 @@
 import { galleryItems } from './gallery-items';
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const galleryRef = document.querySelector(".gallery");
+const galleryRef = document.querySelector('.gallery');
 galleryRef.innerHTML = createMarkup();
 
-const lightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 300,
 });
