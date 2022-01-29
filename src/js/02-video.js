@@ -3,19 +3,17 @@ import throttle from 'lodash.throttle';
 const iframe = document.querySelector('iframe')
 const player = new Vimeo.Player(iframe);
 
-// ************************************************************************ 
+// ***********************************Рефакторинг************************************* 
 player.on('timeupdate', throttle(function (currentTime) {
     console.log(`Просмотр на : ${JSON.stringify(currentTime)}`)
     // console.log(currentTime)
-    localStorage.setItem("videoplayer-current-time", JSON.stringify(currentTime)   );
+    localStorage.setItem("videoplayer-current-time", JSON.stringify(currentTime));
     }, 1000),
 );
-
 const saveCurrentTime = localStorage.getItem("videoplayer-current-time");
 // console.log(saveCurrentTime)
 const parsedCurrentTime = JSON.parse(saveCurrentTime)
 // console.log(parsedCurrentTime)
-
 player.setCurrentTime(parsedCurrentTime.seconds)
 
 

@@ -13,25 +13,25 @@ refs.form.addEventListener('input', throttle(onFormData, 500))
 
 function onFormSubmit(evt) { 
     evt.preventDefault();
-    console.log('Отправляем форму и очищаем локальное хранилище');
-    evt.currentTarget.reset();
-    localStorage.removeItem(STORAGE_KEY)
+    console.log(`email: ${refs.email.value}`);
+    console.log(`massage: ${refs.text.value}`);
+    evt.currentTarget.reset();    
+    localStorage.removeItem(STORAGE_KEY);     
 }
 
 function onFormData(e) { 
     formData[e.target.name] = e.target.value;    
-    console.log(formData)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));  
-    console.log()
+    // console.log(formData)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
 saveFormData()
 function saveFormData() { 
     try {
         const savedFormData = localStorage.getItem(STORAGE_KEY);
-        console.log(savedFormData)
+        // console.log(savedFormData)
         const parsedFormData = JSON.parse(savedFormData); 
-        console.log(parsedFormData)
+        // console.log(parsedFormData)
         if (parsedFormData) { 
             refs.email.value = parsedFormData.email || "";
             refs.text.value = parsedFormData.message || "";
