@@ -3,7 +3,7 @@ import throttle from 'lodash.throttle';
 const iframe = document.querySelector('iframe')
 const player = new Vimeo.Player(iframe);
 
-// ***********************************Рефакторинг************************************* 
+// ************************************************************************ 
 player.on('timeupdate', throttle(function (currentTime) {
     console.log(`Просмотр на : ${JSON.stringify(currentTime)}`)
     // console.log(currentTime)
