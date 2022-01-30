@@ -16,7 +16,7 @@ function onFormSubmit(evt) {
     console.log(`email: ${refs.email.value}`);
     console.log(`massage: ${refs.text.value}`);
     evt.currentTarget.reset();    
-    localStorage.removeItem(STORAGE_KEY);     
+    localStorage.removeItem(STORAGE_KEY); 
 }
 
 function onFormData(e) { 
