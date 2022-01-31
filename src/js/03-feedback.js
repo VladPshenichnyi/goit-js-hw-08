@@ -30,7 +30,7 @@ formData = JSON.parse(saveStorage)
 // console.log(formData)
 
 function onFormData(e) {
-    formData[e.target.name] = e.target.value;    
+    formData[e.target.name] = e.target.value;
     // console.log(formData)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
     // console.log(JSON.stringify(formData))
