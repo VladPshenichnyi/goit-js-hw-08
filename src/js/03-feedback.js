@@ -16,7 +16,7 @@ refs.form.addEventListener('input', throttle(onFormData, 500))
 function onFormSubmit(evt) { 
     evt.preventDefault();
     console.log(`email: ${refs.email.value}`);
-    console.log(`massage: ${refs.text.value}`);
+    console.log(`message: ${refs.text.value}`);
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
     // localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultLocalStorage));
