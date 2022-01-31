@@ -4,4 +4,4 @@ var t=arguments[3],n="Expected a function",e=NaN,i="[object Symbol]",r=/^\s+|\s+
 },{}],"TTyb":[function(require,module,exports) {
 "use strict";var e=t(require("lodash.throttle"));function t(e){return e&&e.__esModule?e:{default:e}}const a="feedback-form-state",r={form:document.querySelector(".feedback-form"),email:document.querySelector(".feedback-form input"),text:document.querySelector(".feedback-form textarea")};function o(e){const t={email:r.email.value,message:r.text.value};localStorage.setItem(a,JSON.stringify(t))}function l(){try{const t=localStorage.getItem(a),o=JSON.parse(t);o&&(r.email.value=o.email||"",r.text.value=o.message||"")}catch(e){console.error("Get state error: ",e.message)}}function m(e){e.preventDefault(),console.log(`email: ${r.form.email.value}`),console.log(`massage: ${r.form.message.value}`),e.currentTarget.reset(),localStorage.removeItem(a)}r.form.addEventListener("submit",m),r.form.addEventListener("input",(0,e.default)(o,500)),l();
 },{"lodash.throttle":"FNyO"}]},{},["TTyb"], null)
-//# sourceMappingURL=/goit-js-hw-08/03-feedback.9719624c.js.map
+//# sourceMappingURL=/goit-js-hw-08/03-feedback.4e99c7e1.js.map
