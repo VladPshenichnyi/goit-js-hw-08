@@ -16,7 +16,7 @@ function onFormData(e) {
         email: refs.email.value,
         message: refs.text.value,
         }
-    formData[e.target.name] = e.target.value;
+    // formData[e.target.name] = e.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
 };
 
