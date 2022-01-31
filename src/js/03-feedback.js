@@ -10,19 +10,18 @@ const refs = {
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormData, 500))
-
 // let defaultLocalStorage = {};
 
 function onFormSubmit(evt) { 
     evt.preventDefault();
     console.log(`email: ${refs.email.value}`);
-    console.log(`message: ${refs.text.value}`);
+    console.log(`massage: ${refs.text.value}`);
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
     // localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultLocalStorage));
     // localStorage.clear();
 }
-let saveStorage;
+let saveStorage;    
 saveStorage = localStorage.getItem(STORAGE_KEY)
 formData = JSON.parse(saveStorage)
 // console.log(typeof (saveStorage))
@@ -30,7 +29,7 @@ formData = JSON.parse(saveStorage)
 // console.log(formData)
 
 function onFormData(e) {
-    formData[e.target.name] = e.target.value;
+    formData[e.target.name] = e.target.value;    
     // console.log(formData)
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
     // console.log(JSON.stringify(formData))
