@@ -13,10 +13,10 @@ loadData(refs.form);
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormData, 50));
 
-function savedData(target) { 
-    if (target) {
+function savedData(e) { 
+    if (e) {
         let formData = {};
-        [...target.elements].forEach(elem => {
+        [...e.elements].forEach(elem => {
             if (elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') {
                 formData[elem.attributes.name.value] = elem.value;
             }
