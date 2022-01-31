@@ -11,7 +11,7 @@ const refs = {
 loadData(refs.form);
 
 refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', throttle(onFormData, 50));
+refs.form.addEventListener('input', throttle(onFormData, 500));
 
 function savedData(e) { 
     if (e) {
@@ -31,11 +31,11 @@ function onFormData(e) {
     }
 };
 
-function loadData(form) {
+function loadData(formElem) {
     let storageForm = localStorage.getItem(STORAGE_KEY);
     if (storageForm) {
         storageForm = JSON.parse(storageForm);
-        [...form.elements].forEach(elem => {
+        [...formElem.elements].forEach(elem => {
             if ((elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') && storageForm[elem.name]) {
                 elem.value = storageForm[elem.name];
             }
