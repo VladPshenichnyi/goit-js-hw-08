@@ -8,40 +8,33 @@ const refs = {
     text: document.querySelector('.feedback-form textarea')
 };
 
-loadData(refs.form);
-
 refs.form.addEventListener('submit', onFormSubmit);
-refs.form.addEventListener('input', throttle(onFormData, 100));
-
-function savedData(e) { 
-    if (e) {
-        let formData = {};
-        [...e.elements].forEach(elem => {
-            if (elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') {
-                formData[elem.attributes.name.value] = elem.value;
-            }
-        });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-    }
-}
+refs.form.addEventListener('input', throttle(onFormData, 500));
 
 function onFormData(e) {
-    if (e.currentTarget) { 
-        savedData(e.currentTarget)
-    }
+    const formData = {
+        email: refs.email.value,
+        message: refs.text.value,
+        }
+    formData[e.target.name] = e.target.value;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData))
 };
 
-function loadData(formElem) {
-    let storageForm = localStorage.getItem(STORAGE_KEY);
-    if (storageForm) {
-        storageForm = JSON.parse(storageForm);
-        [...formElem.elements].forEach(elem => {
-            if ((elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') && storageForm[elem.name]) {
-                elem.value = storageForm[elem.name];
-            }
-        });
-    }
-}
+saveFormData()
+function saveFormData() { 
+    try {
+        const savedFormData = localStorage.getItem(STORAGE_KEY);
+        // console.log(savedFormData)
+        const parsedFormData = JSON.parse(savedFormData); 
+        // console.log(parsedFormData)
+        if (parsedFormData) { 
+            refs.email.value = parsedFormData.email || ''; 
+            refs.text.value = parsedFormData.message || '';
+        };     
+    } catch (error) {
+    console.error("Get state error: ", error.message);
+    };
+};
 
 function onFormSubmit(evt) { 
     evt.preventDefault();
@@ -50,6 +43,30 @@ function onFormSubmit(evt) {
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 };
+
+// loadData(refs.form);
+// function savedData(e) { 
+//     if (e) {
+//         let formData = {};
+//         [...e.elements].forEach(elem => {
+//             if (elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') {
+//                 formData[elem.attributes.name.value] = elem.value;
+//             }
+//         });
+//         localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+//     }
+// }
+// function loadData(formElem) {
+//     let storageForm = localStorage.getItem(STORAGE_KEY);
+//     if (storageForm) {
+//         storageForm = JSON.parse(storageForm);
+//         [...formElem.elements].forEach(elem => {
+//             if ((elem.nodeName === 'INPUT' || elem.nodeName === 'TEXTAREA') && storageForm[elem.name]) {
+//                 elem.value = storageForm[elem.name];
+//             }
+//         });
+//     }
+// }
 // function saveStorage(e) {
 // try {
 //     saveStorage = localStorage.getItem(STORAGE_KEY)
@@ -68,19 +85,3 @@ function onFormSubmit(evt) {
 // }
 // formData = JSON.parse(saveStorage)
 // 
-// saveFormData()
-// function saveFormData() { 
-//     try {
-//         const savedFormData = localStorage.getItem(STORAGE_KEY);
-//         // console.log(savedFormData)
-//         const parsedFormData = JSON.parse(savedFormData); 
-//         // console.log(parsedFormData)
-//         // if (parsedFormData) { 
-//         //     refs.email.value = parsedFormData.email || ''; 
-//         //     refs.text.value = parsedFormData.message || '';
-//         // };     
-//     } catch (error) {
-//     console.error("Get state error: ", error.message);
-//     };
-// };
-
